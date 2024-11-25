@@ -16,13 +16,21 @@ pipeline{
         }
         stage('Start server'){     //Start server
             steps{
-                sh 'node server.js'
+                sh 'nohup node server.js &' // run in the background
             }
         }
         stage('Test'){      //Test listens to started server
             steps{
                 sh 'npm run test'
             }
+        }
+    }
+    post{
+        failure{
+            //send email on failure
+            mail to: "g16a7782@gmail.com",
+            subject:"FAILURE: ${currentBuild.fullDisplayName}",
+            body: "Server test failed."
         }
     }
 }
