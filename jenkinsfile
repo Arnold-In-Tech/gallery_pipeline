@@ -14,15 +14,15 @@ pipeline{
                 sh 'npm install'
             }
         }
-        stage('Build'){     //Build process
+        stage('Start server'){     //Start server
             steps{
-                sh 'npm run'
+                sh 'node server.js'
             }
         }
-        // stage('Test'){      //Test with serverTest.js
-        //     steps{
-        //         sh 'npm test'
-        //     }
-        // }
+        stage('Test'){      //Test listens to started server
+            steps{
+                sh 'npm run test'
+            }
+        }
     }
 }
