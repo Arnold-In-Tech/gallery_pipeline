@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+    tools{
+        nodejs 'Node-23'
+    }
+    stages{
+        stage('Clone repository'){  //Clone git repo and checkout code on master branch
+            steps{
+                git branch: 'master', url: 'https://github.com/Arnold-In-Tech/gallery_pipeline'
+            }
+        }
+        stage('Install Dependencies'){  //Install dependencies
+            steps{
+                sh 'npm install'
+            }
+        }
+        stage('Build'){     //Build process
+            steps{
+                sh 'npm run'
+            }
+        }
+        // stage('Test'){      //Test with serverTest.js
+        //     steps{
+        //         sh 'npm test'
+        //     }
+        // }
+    }
+}
