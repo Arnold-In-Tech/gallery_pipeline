@@ -4,7 +4,7 @@ pipeline{
         nodejs 'Node-23'
     }
     environment{
-        SLACK_CHANNEL ='arnold_ip1'
+    	SLACK_CHANNEL = '#all-arnoldip1'
         RENDER_URL ='https://gallery_pipeline.onrender.com'
     }
     stages{
@@ -37,10 +37,10 @@ pipeline{
                 color: 'good',
                 message: "Build ${env.BUILD_NUMBER} was successfully deployed to Render\n view application at: ${env.RENDER_URL}"
             )
-        }        
+        }
+        //send email on failure        
         failure{
-            //send email on failure
-            mail to: "g16a7782@gmail.com",
+            mail to: "g19a7783@gmail.com",
             subject:"Failed Pipeline: ${currentBuild.fullDisplayName}",
             body: "Server test failed."
         }
