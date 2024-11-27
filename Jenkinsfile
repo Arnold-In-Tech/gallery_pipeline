@@ -20,7 +20,7 @@ pipeline{
         }
         stage('Start server'){     //Start server
             steps{
-                // sh 'nohup node server.js &' // run in the background
+                sh 'nohup node server.js &' // run in the background
                 sh 'echo "server is started"'
             }
         }
@@ -52,7 +52,7 @@ pipeline{
                       <p><i>(Build log is attached.)</i></p>
                     """,
                 subject: "Status: FAILURE -Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'", 
-                to: 'g16a7782@gmail.com'
+                to: 'g19a88782@gmail.com'
         }
     }
 }
