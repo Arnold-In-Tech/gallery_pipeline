@@ -21,7 +21,7 @@ pipeline{
         stage('Start server'){     //Start server
             steps{
                 // sh 'nohup node server.js &' // run in the background
-                sh 'echo "server is started"
+                sh 'echo "server is started"'
             }
         }
         stage('Test'){      //Test listens to started server
